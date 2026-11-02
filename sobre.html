@@ -1,16 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Sobre o projeto — Projeto Arrudas</title>
-
     <style>
-
         /* Configurações gerais da página */
-
         body {
             margin: 0;
             padding: 0;
@@ -19,18 +16,14 @@
             background-color: #f3f0e8;
         }
 
-
         /* Conteúdo principal */
-
         main {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 100px 30px 60px;
+            padding: 80px 30px 60px;
         }
 
-
         /* Título */
-
         h1 {
             text-align: center;
             font-size: 42px;
@@ -38,17 +31,23 @@
             margin-bottom: 50px;
         }
 
-
-        /* Texto */
-
+        /* Estilo dos parágrafos do texto */
         .texto {
             font-size: 17px;
-            line-height: 1.7;
+            line-height: 1.8;
         }
 
+        .texto p {
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        /* Classe especial para o espaço equivalente a 3 parágrafos */
+        .texto p.espaco-extra {
+            margin-bottom: 85px; /* Espaçamento ampliado para marcar a transição */
+        }
 
         /* Imagem */
-
         .imagem-projeto {
             text-align: center;
             margin: 50px 0;
@@ -58,99 +57,69 @@
             width: 100%;
             max-width: 900px;
             height: auto;
+            border-radius: 8px;
         }
-
-
-        /* Fotos e vídeos */
-
-        .registros {
-            margin-top: 80px;
-        }
-
-        .registros h2 {
-            font-size: 28px;
-            font-weight: normal;
-            margin-bottom: 20px;
-        }
-
-        .registros p {
-            font-size: 17px;
-            line-height: 1.7;
-        }
-
 
         /* Ajustes para telas pequenas */
-
         @media (max-width: 600px) {
-
             main {
-                padding: 80px 20px 50px;
+                padding: 60px 20px 40px;
             }
-
             h1 {
                 font-size: 32px;
             }
-
             .texto {
                 font-size: 16px;
             }
-
-            .registros h2 {
-                font-size: 24px;
+            .texto p.espaco-extra {
+                margin-bottom: 60px;
             }
-
         }
-
     </style>
-
 </head>
-
 
 <body>
 
-
     <!-- CONTEÚDO PRINCIPAL -->
-
     <main>
 
         <h1>SOBRE O PROJETO</h1>
 
-
         <!-- TEXTO SOBRE O PROJETO -->
-
         <div class="texto">
-
+            <!-- PRIMEIRA PARTE: CONCEITO E NARRATIVA -->
             <p>
-                Aqui entra o texto sobre o projeto.
+                “Arrudas: Memórias sonoras de um território-rio” é um projeto que narra memórias a partir da escuta das composições sonoras que atravessam as paisagens do ribeirão Arrudas. Mais do que pano de fundo, o som é um elemento que carrega memória e história e mobiliza percepções, influenciando a forma como sentimos, habitamos e nos relacionamos com os espaços e uns com os outros.
+            </p>
+            <p>
+                Corpos d’água, como o Arrudas, carregam em si paisagens sonoras que correm através do tempo e do espaço e, como um arquivo, guardam memórias e histórias de vida. O desaparecimento de um rio expressa o apagamento dessas memórias.
+            </p>
+            <p>
+                O ribeirão nasce no município de Contagem e corre, percorrendo Belo Horizonte, até desaguar no rio das Velhas, em Sabará. O território do Arrudas possibilitou que múltiplos seres e comunidades originárias residissem e se assentassem em seu entorno. Para essas comunidades, o rio é um ente que dá sentido ao seu modo de ser e estar no mundo.
+            </p>
+            <p class="espaco-extra">
+                Embora considerado um esgoto a céu aberto ou um rio “morto”, consequência das práticas e relações sociais que o envolvem, o ribeirão Arrudas vive. Todo esse contexto histórico faz dele um importante guardião de memórias. Escute o que o ribeirão Arrudas tem para te contar.
             </p>
 
+            <!-- SEGUNDA PARTE: INFORMAÇÕES TÉCNICAS E CRÉDITOS -->
+            <p>
+                “Arrudas: Memórias sonoras de um território-rio” foi realizado a partir de gravações sonoras ao longo do ribeirão Arrudas e também em outros corpos d’água relacionados a ele.
+            </p>
+            <p>
+                A composição sonora usa áudios de canto entoado pelos Pataxó da Aldeia Encontro das Águas e trecho de uma das importantes falas do mestre Antônio Bispo dos Santos, Nego Bispo.
+            </p>
+            <p>
+                Este projeto foi financiado pela Lei Paulo Gustavo (LPG), edital 02/2023 (245218), e pela Política Nacional Aldir Blanc de Fomento à Cultura (PNAB), edital 12/2024 (8387). Realização: 2025/2026.
+            </p>
+          
         </div>
-
 
         <!-- IMAGEM DO PROJETO -->
-
         <div class="imagem-projeto">
-
             <img src="imagem-sobre.jpg" alt="Descrição da imagem">
-
         </div>
 
-
-        <!-- FOTOS E VÍDEOS -->
-
-        <section class="registros">
-
-            <h2>FOTOS E VÍDEOS</h2>
-
-            <p>
-                Registros do processo de pesquisa e de gravação do projeto.
-            </p>
-
-        </section>
-
-
     </main>
-
 
 </body>
 
