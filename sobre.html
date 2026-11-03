@@ -13,12 +13,12 @@
             padding: 0;
             font-family: "Courier New", monospace;
             color: #222;
-            background-color: #e8e2d5; /* Cor de fundo sépia/papel corrigida para igualar ao index */
+            background-color: #f3f0e8; /* Cor exata do fundo padrão do index */
             position: relative;
             min-height: 100vh;
         }
 
-        /* Camada de Fundo do Mapa SVG (Com a máscara e tom sépia original) */
+        /* Camada de Fundo do Mapa SVG (Computador) */
         body::before {
             content: "";
             position: fixed;
@@ -32,16 +32,16 @@
             background-image: url('mapa.svg');
             background-repeat: no-repeat;
             
-            /* Posição deslocada para a direita para exibir a parte esquerda importante */
+            /* Posição para computador */
             background-position: 108% center;
             background-size: cover; 
 
-            /* Restaura o tom sépia original e a transparência desejada */
+            /* Tom sépia e transparência */
             opacity: 0.18; 
             filter: sepia(0.5) contrast(0.95); 
         }
 
-        /* Conteúdo principal - Mantido com a largura original que você definiu */
+        /* Conteúdo principal - Largura original mantida */
         main {
             width: 90%;
             max-width: 1200px; 
@@ -72,8 +72,15 @@
             opacity: 0.85;
         }
 
-        /* Ajustes para telas pequenas (Mobile) */
+        /* Ajustes para telas pequenas (Mobile / Vertical) */
         @media (max-width: 600px) {
+            /* Corrige o mapa cortado nas bordas no celular */
+            body::before {
+                background-position: center center;
+                background-size: contain;
+                opacity: 0.15;
+            }
+
             main {
                 width: 95%;
                 box-sizing: border-box;
