@@ -16,11 +16,11 @@
             background-color: #f3f0e8;
         }
 
-        /* Conteúdo principal */
+        /* Conteúdo principal - Largura maior para ocupar mais área */
         main {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 80px 30px 60px;
+            padding: 80px 40px 60px;
         }
 
         /* Estilo do texto e espaçamento de 1,5 entre as linhas */
@@ -29,32 +29,32 @@
             line-height: 1.5;
         }
 
-        /* Zera a separação entre os parágrafos para que fiquem fluidos */
+        /* Zera margens entre os parágrafos e define o alinhamento à esquerda */
         .texto p {
             margin-top: 0;
             margin-bottom: 0;
             text-align: left;
         }
 
-        /* Linha divisória entre os dois blocos de texto */
+        /* Linha divisória com a mesma largura total do texto */
         .divisor {
             border: none;
             border-top: 1px solid #1c4354;
-            width: 100px;
-            margin: 3.5em auto; /* Centraliza a linha e distribui o espaço triplo acima e abaixo */
+            width: 100%; /* Ocupe 100% da largura da caixa de texto */
+            margin: 3.5em 0; /* Mantém o salto triplo acima e abaixo da linha */
             opacity: 0.5;
         }
 
-        /* Ajustes para telas pequenas */
+        /* Ajustes para telas pequenas (Celulares) */
         @media (max-width: 600px) {
             main {
-                padding: 60px 20px 40px;
+                padding: 50px 20px 40px;
             }
             .texto {
                 font-size: 16px;
             }
             .divisor {
-                margin: 2.5em auto;
+                margin: 2.5em 0;
             }
         }
     </style>
@@ -81,7 +81,7 @@
                 Embora considerado um esgoto a céu aberto ou um rio “morto”, consequência das práticas e relações sociais que o envolvem, o ribeirão Arrudas vive. Todo esse contexto histórico faz dele um importante guardião de memórias. Escute o que o ribeirão Arrudas tem para te contar.
             </p>
 
-            <!-- LINHA DIVISÓRIA COM ESPAÇAMENTO TRIPLO -->
+            <!-- LINHA DIVISÓRIA COM ESPAÇAMENTO TRIPLO E LARGURA TOTAL DO TEXTO -->
             <hr class="divisor">
 
             <!-- SEGUNDA PARTE: INFORMAÇÕES TÉCNICAS E CRÉDITOS -->
