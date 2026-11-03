@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -13,11 +14,10 @@
     <style>
         :root {
             --cor-arrudas: #1c4354;
-            /* Cor exata capturada da barra de navegação do index */
-            --cor-fundo: #d3cebd; 
+            /* Mesma cor de fundo utilizada na aba index */
+            --cor-fundo: #d8d0bc; 
         }
 
-        /* Define a cor na raiz para eliminar qualquer flash branco no carregamento */
         html, body {
             margin: 0;
             padding: 0;
@@ -37,17 +37,17 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: -1;
+            z-index: 0;
 
             background-image: url('mapa.svg');
             background-repeat: no-repeat;
             background-position: 108% center;
             background-size: cover;
 
-            /* Filtro de cor idêntico ao uMap */
+            /* Mesmo filtro de cor utilizado na aba index */
             filter: sepia(75%) saturate(65%) brightness(90%) contrast(95%);
             
-            /* Opacidade visível para o mapa aparecer claramente */
+            /* Transparência da imagem */
             opacity: 0.60; 
         }
 
@@ -58,7 +58,7 @@
             margin: 0 auto;
             padding: 80px 40px 60px;
             position: relative;
-            z-index: 2;
+            z-index: 1;
         }
 
         .texto {
