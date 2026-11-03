@@ -23,14 +23,6 @@
             padding: 80px 30px 60px;
         }
 
-        /* Título */
-        h1 {
-            text-align: center;
-            font-size: 42px;
-            font-weight: normal;
-            margin-bottom: 50px;
-        }
-
         /* Estilo do texto e espaçamento de 1,5 entre as linhas */
         .texto {
             font-size: 17px;
@@ -44,9 +36,13 @@
             text-align: justify;
         }
 
-        /* Salto triplo exclusivo logo após o "Escute o que o ribeirão Arrudas tem para te contar." */
-        .texto p.espaco-extra {
-            margin-bottom: 3.5em; /* Equivalente ao salto triplo de distância */
+        /* Linha divisória entre os dois blocos de texto */
+        .divisor {
+            border: none;
+            border-top: 1px solid #1c4354;
+            width: 100px;
+            margin: 3.5em auto; /* Centraliza a linha e distribui o espaço triplo acima e abaixo */
+            opacity: 0.5;
         }
 
         /* Ajustes para telas pequenas */
@@ -54,11 +50,11 @@
             main {
                 padding: 60px 20px 40px;
             }
-            h1 {
-                font-size: 32px;
-            }
             .texto {
                 font-size: 16px;
+            }
+            .divisor {
+                margin: 2.5em auto;
             }
         }
     </style>
@@ -68,8 +64,6 @@
 
     <!-- CONTEÚDO PRINCIPAL -->
     <main>
-
-        <h1>SOBRE O PROJETO</h1>
 
         <!-- TEXTO SOBRE O PROJETO -->
         <div class="texto">
@@ -83,9 +77,12 @@
             <p>
                 O ribeirão nasce no município de Contagem e corre, percorrendo Belo Horizonte, até desaguar no rio das Velhas, em Sabará. O território do Arrudas possibilitou que múltiplos seres e comunidades originárias residissem e se assentassem em seu entorno. Para essas comunidades, o rio é um ente que dá sentido ao seu modo de ser e estar no mundo.
             </p>
-            <p class="espaco-extra">
+            <p>
                 Embora considerado um esgoto a céu aberto ou um rio “morto”, consequência das práticas e relações sociais que o envolvem, o ribeirão Arrudas vive. Todo esse contexto histórico faz dele um importante guardião de memórias. Escute o que o ribeirão Arrudas tem para te contar.
             </p>
+
+            <!-- LINHA DIVISÓRIA COM ESPAÇAMENTO TRIPLO -->
+            <hr class="divisor">
 
             <!-- SEGUNDA PARTE: INFORMAÇÕES TÉCNICAS E CRÉDITOS -->
             <p>
@@ -95,9 +92,11 @@
                 A composição sonora usa áudios de canto entoado pelos Pataxó da Aldeia Encontro das Águas e trecho de uma das importantes falas do mestre Antônio Bispo dos Santos, Nego Bispo.
             </p>
             <p>
-                Este projeto foi financiado pela Lei Paulo Gustavo (LPG), edital 02/2023 (245218), e pela Política Nacional Aldir Blanc de Fomento à Cultura (PNAB), edital 12/2024 (8387).Realização: 2025/2026.
+                Este projeto foi financiado pela Lei Paulo Gustavo (LPG), edital 02/2023 (245218), e pela Política Nacional Aldir Blanc de Fomento à Cultura (PNAB), edital 12/2024 (8387).
             </p>
-            
+            <p>
+                Realização: 2025/2026.
+            </p>
         </div>
 
     </main>
