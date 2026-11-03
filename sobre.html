@@ -13,12 +13,12 @@
             padding: 0;
             font-family: "Courier New", monospace;
             color: #222;
-            background-color: #f3f0e8; /* Cor de fundo sépia/papel */
+            background-color: #f3f0e8; /* Cor de fundo sépia/papel padrão do index */
             position: relative;
             min-height: 100vh;
         }
 
-        /* Camada de Fundo do Mapa SVG (Ocupa 100% da tela) */
+        /* Camada de Fundo do Mapa SVG (Centralizado, transparente e deslocado para a direita) */
         body::before {
             content: "";
             position: fixed;
@@ -31,20 +31,23 @@
             /* Carrega a imagem do mapa */
             background-image: url('mapa.svg');
             background-repeat: no-repeat;
-            background-position: center center;
-            background-size: cover; /* Faz a imagem cobrir toda a área da janela */
+            
+            /* Ajuste da posição: empurra o mapa para a direita para revelar a parte esquerda. 
+               O primeiro valor (58%) controla horizontalmente (aumente para ir mais pra direita). 
+               O segundo valor (center) controla verticalmente. */
+            background-position: 58% center;
+            background-size: cover; 
 
-            /* Ajuste de transparência e tom */
-            opacity: 0.18; /* REGULE AQUI: 0.18 = 18% de visibilidade. Aumente ou diminua conforme preferir */
-            filter: sepia(0.5); /* Mantém ou reforça o tom sépia no SVG */
+            /* Ajuste suave de transparência sem distorcer as cores originais */
+            opacity: 0.18; 
         }
 
-        /* Conteúdo principal - Alinhado à esquerda aproveitando a tela */
+        /* Conteúdo principal - Centralizado na tela */
         main {
             width: 90%;
-            max-width: 1300px;
-            margin: 0;
-            padding: 80px 60px 60px;
+            max-width: 900px;
+            margin: 0 auto; /* Centraliza o bloco de texto na tela */
+            padding: 80px 30px 60px;
         }
 
         /* Estilo do texto e espaçamento entre linhas */
@@ -56,7 +59,7 @@
         /* Parágrafos alinhados à esquerda com margem entre si */
         .texto p {
             margin-top: 0;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             text-align: left;
         }
 
@@ -114,7 +117,7 @@
             <!-- LINHA DIVISÓRIA SUAVE -->
             <hr class="divisor">
 
-            <!-- SEGUNDA PARTE: INFORMAÇÕES TÉCNICAS E CRÉDITOS -->
+            <!-- SEGUNDA PARTE: INFORMAÇÕES TÉCNICAS E CRÉDITos -->
             <p>
                 “Arrudas: Memórias sonoras de um território-rio” foi realizado a partir de gravações sonoras ao longo do ribeirão Arrudas e também em outros corpos d’água relacionados a ele.
             </p>
