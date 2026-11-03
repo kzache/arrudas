@@ -39,9 +39,11 @@
         /* Linha divisória com a mesma largura total do texto */
         .divisor {
             border: none;
-            border-top: 3px solid #1a4049; /* Verde/Azul Petróleo */
+            height: 3px; /* Espessura da linha */
+            background: linear-gradient(to right, transparent, #1a4049, transparent); /* Transparente nas pontas e cor no meio */
             width: 100%;
             margin: 3.5em 0;
+            opacity: 0.7; /* Suaviza ainda mais a intensidade */
         }
 
         /* Ajustes para telas pequenas (Celulares) */
