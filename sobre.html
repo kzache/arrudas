@@ -9,7 +9,7 @@
     <style>
         :root {
             --cor-arrudas: #1c4354;
-            --cor-fundo: #d8d0bc; /* Mesma cor de base exata do index */
+            --cor-fundo: #d8d0bc; /* Mantém a cor oficial exata do index */
         }
 
         /* Configurações gerais da página */
@@ -24,7 +24,7 @@
             overflow-x: hidden;
         }
 
-        /* Camada de Fundo do Mapa (Limpa e com opacidade baixa para a cor de fundo dominar) */
+        /* Camada de Fundo do Mapa - Passo 1: Ajustando suavemente a opacidade */
         body::before {
             content: "";
             position: fixed;
@@ -42,28 +42,28 @@
             background-position: 108% center;
             background-size: cover; 
 
-            /* Opacidade sutil para evitar que o mapa "tingue" ou escureça o fundo */
-            opacity: 0.12; 
+            /* Ajustado para 0.10 (um pouco mais leve que o anterior) */
+            opacity: 0.10; 
             filter: none;
         }
 
-        /* Conteúdo principal - Largura mantida conforme sua preferência */
+        /* Conteúdo principal */
         main {
             width: 90%;
             max-width: 1200px; 
-            margin: 0 auto; /* Centraliza o bloco na tela */
+            margin: 0 auto;
             padding: 80px 40px 60px;
             position: relative;
             z-index: 2;
         }
 
-        /* Estilo do texto e espaçamento entre linhas */
+        /* Estilo do texto */
         .texto {
             font-size: 17px;
             line-height: 1.5;
         }
 
-        /* Parágrafos alinhados à esquerda com margem entre si */
+        /* Parágrafos alinhados à esquerda */
         .texto p {
             margin-top: 0;
             margin-bottom: 15px;
@@ -85,7 +85,7 @@
             body::before {
                 background-position: center center;
                 background-size: cover; 
-                opacity: 0.10; /* Mantém o mapa suave e a cor de fundo limpa na vertical */
+                opacity: 0.08;
             }
 
             main {
