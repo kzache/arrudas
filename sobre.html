@@ -7,18 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre o projeto — Projeto Arrudas</title>
     <style>
+        :root {
+            --cor-arrudas: #1c4354;
+            --cor-fundo: #d8d0bc; /* Mesma cor de base exata do index */
+        }
+
         /* Configurações gerais da página */
         body {
             margin: 0;
             padding: 0;
             font-family: "Courier New", monospace;
             color: #222;
-            background-color: #ded9ce; /* Retorna para o tom sépia suave da imagem de referência */
+            background-color: var(--cor-fundo);
             position: relative;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* Camada de Fundo do Mapa SVG (Computador) */
+        /* Camada de Fundo do Mapa (Limpa e com opacidade baixa para a cor de fundo dominar) */
         body::before {
             content: "";
             position: fixed;
@@ -26,7 +32,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: -1; /* Mantém o mapa atrás de todo o conteúdo */
+            z-index: -1;
 
             /* Carrega a imagem do mapa */
             background-image: url('mapa.svg');
@@ -36,17 +42,19 @@
             background-position: 108% center;
             background-size: cover; 
 
-            /* Transparência e filtro */
-            opacity: 0.22; 
-            filter: sepia(0.3) contrast(0.9); 
+            /* Opacidade sutil para evitar que o mapa "tingue" ou escureça o fundo */
+            opacity: 0.12; 
+            filter: none;
         }
 
-        /* Conteúdo principal */
+        /* Conteúdo principal - Largura mantida conforme sua preferência */
         main {
             width: 90%;
             max-width: 1200px; 
             margin: 0 auto; /* Centraliza o bloco na tela */
             padding: 80px 40px 60px;
+            position: relative;
+            z-index: 2;
         }
 
         /* Estilo do texto e espaçamento entre linhas */
@@ -58,7 +66,7 @@
         /* Parágrafos alinhados à esquerda com margem entre si */
         .texto p {
             margin-top: 0;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             text-align: left;
         }
 
@@ -73,21 +81,22 @@
         }
 
         /* Ajustes para telas pequenas (Mobile / Vertical) */
-        @media (max-width: 600px) {
+        @media (max-width: 850px) {
             body::before {
                 background-position: center center;
                 background-size: cover; 
-                opacity: 0.18;
+                opacity: 0.10; /* Mantém o mapa suave e a cor de fundo limpa na vertical */
             }
 
             main {
                 width: 95%;
-                box-sizing: border-box;
-                padding: 70px 20px 50px;
+                padding: 40px 15px 40px;
             }
+
             .texto {
                 font-size: 16px;
             }
+
             .divisor {
                 margin: 2.5em 0;
             }
