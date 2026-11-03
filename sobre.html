@@ -13,7 +13,7 @@
             padding: 0;
             font-family: "Courier New", monospace;
             color: #222;
-            background-color: #ded9ce; /* Tom de fundo sépia suave idêntico ao da imagem de referência */
+            background-color: #ddd3af; /* Mistura exata entre #dacba7 e #e0dfb8 */
             position: relative;
             min-height: 100vh;
         }
@@ -36,7 +36,7 @@
             background-position: 108% center;
             background-size: cover; 
 
-            /* Transparência e filtro ajustados para mesclar com o novo fundo */
+            /* Transparência e filtro */
             opacity: 0.22; 
             filter: sepia(0.3) contrast(0.9); 
         }
@@ -76,8 +76,8 @@
         @media (max-width: 600px) {
             body::before {
                 background-position: center center;
-                background-size: contain;
-                opacity: 0.18;
+                background-size: cover; /* Garante que o mapa cubra a tela na vertical sem sumir */
+                opacity: 0.20; /* Um pouco mais visível para não sumir na tela estreita */
             }
 
             main {
