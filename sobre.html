@@ -6,14 +6,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre o projeto — Projeto Arrudas</title>
+    
+    <!-- Precarrega o mapa.svg para exibição imediata -->
+    <link rel="preload" href="mapa.svg" as="image">
+
     <style>
         :root {
             --cor-arrudas: #1c4354;
-            --cor-fundo: #d8d0bc; /* Cor de base neutra */
+            --cor-fundo: #c9c8b7; /* Nova cor de fundo solicitada */
         }
 
-        /* Configurações gerais da página */
-        body {
+        /* Define a cor na raiz para eliminar qualquer flash branco no carregamento */
+        html, body {
             margin: 0;
             padding: 0;
             font-family: "Courier New", monospace;
@@ -24,7 +28,7 @@
             overflow-x: hidden;
         }
 
-        /* Aplica o filtro de cor IDÊNTICO ao mapa do uMap sobre a imagem mapa.svg */
+        /* Camada do mapa com o filtro do uMap e opacidade equilibrada */
         body::before {
             content: "";
             position: fixed;
@@ -34,19 +38,18 @@
             height: 100vh;
             z-index: -1;
 
-            /* Carrega a imagem do mapa */
             background-image: url('mapa.svg');
             background-repeat: no-repeat;
-            
-            /* Posição para computador */
             background-position: 108% center;
-            background-size: cover; 
+            background-size: cover;
 
-            /* FILTRO EXATO DO UMAP NO INDEX: */
+            /* Filtro de cor idêntico ao uMap */
             filter: sepia(75%) saturate(65%) brightness(90%) contrast(95%);
             
-            /* Transparência inicial para testarmos o tom */
-            opacity: 0.20; 
+            /* Opacidade ajustada para o mapa aparecer de forma suave sobre a nova cor */
+            opacity: 0.35; 
+            
+            will-change: opacity, filter;
         }
 
         /* Conteúdo principal */
@@ -65,14 +68,12 @@
             line-height: 1.5;
         }
 
-        /* Parágrafos alinhados à esquerda */
         .texto p {
             margin-top: 0;
             margin-bottom: 15px;
             text-align: left;
         }
 
-        /* Linha divisória com gradiente suave nas pontas */
         .divisor {
             border: none;
             height: 3px;
@@ -82,12 +83,12 @@
             opacity: 0.85;
         }
 
-        /* Ajustes para telas pequenas (Mobile / Vertical) */
+        /* Ajustes para celular */
         @media (max-width: 850px) {
             body::before {
                 background-position: center center;
                 background-size: cover; 
-                opacity: 0.20;
+                opacity: 0.30;
             }
 
             main {
@@ -108,12 +109,8 @@
 
 <body>
 
-    <!-- CONTEÚDO PRINCIPAL -->
     <main>
-
-        <!-- TEXTO SOBRE O PROJETO -->
         <div class="texto">
-            <!-- PRIMEIRA PARTE: CONCEITO E NARRATIVA -->
             <p>
                 “Arrudas: Memórias sonoras de um território-rio” é um projeto que narra memórias a partir da escuta das composições sonoras que atravessam as paisagens do ribeirão Arrudas. Mais do que pano de fundo, o som é um elemento que carrega memória e história e mobiliza percepções, influenciando a forma como sentimos, habitamos e nos relacionamos com os espaços e uns com os outros.
             </p>
@@ -130,10 +127,8 @@
                 Escute o que o ribeirão Arrudas tem para te contar.   
             </p>
 
-            <!-- LINHA DIVISÓRIA SUAVE -->
             <hr class="divisor">
 
-            <!-- SEGUNDA PARTE: INFORMAÇÕES TÉCNICAS E CRÉDITOS -->
             <p>
                 “Arrudas: Memórias sonoras de um território-rio” foi realizado a partir de gravações sonoras ao longo do ribeirão Arrudas e também em outros corpos d’água relacionados a ele.
             </p>
@@ -143,9 +138,7 @@
             <p>
                 Este projeto foi financiado pela Lei Paulo Gustavo (LPG), edital 02/2023 (245218), e pela Política Nacional Aldir Blanc de Fomento à Cultura (PNAB), edital 12/2024 (8387). Realização: 2025/2026.
             </p>
-            
         </div>
-
     </main>
 
 </body>
