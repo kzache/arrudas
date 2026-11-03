@@ -18,7 +18,7 @@
             min-height: 100vh;
         }
 
-        /* Camada de Fundo do Mapa SVG (Centralizado, transparente e deslocado para a direita) */
+        /* Camada de Fundo do Mapa SVG (Com a máscara e tom sépia original) */
         body::before {
             content: "";
             position: fixed;
@@ -32,22 +32,21 @@
             background-image: url('mapa.svg');
             background-repeat: no-repeat;
             
-            /* Ajuste da posição: empurra o mapa para a direita para revelar a parte esquerda. 
-               O primeiro valor (58%) controla horizontalmente (aumente para ir mais pra direita). 
-               O segundo valor (center) controla verticalmente. */
+            /* Posição deslocada para a direita para exibir a parte esquerda importante */
             background-position: 58% center;
             background-size: cover; 
 
-            /* Ajuste suave de transparência sem distorcer as cores originais */
+            /* Restaura o tom sépia original e a transparência desejada */
             opacity: 0.18; 
+            filter: sepia(0.5) contrast(0.95); 
         }
 
-        /* Conteúdo principal - Centralizado na tela */
+        /* Conteúdo principal - Mais largo para acomodar mais texto */
         main {
             width: 90%;
-            max-width: 900px;
-            margin: 0 auto; /* Centraliza o bloco de texto na tela */
-            padding: 80px 30px 60px;
+            max-width: 1100px; /* <-- Aumentado para o texto ocupar mais espaço horizontal */
+            margin: 0 auto; /* Centraliza o bloco na tela */
+            padding: 80px 40px 60px;
         }
 
         /* Estilo do texto e espaçamento entre linhas */
@@ -59,7 +58,7 @@
         /* Parágrafos alinhados à esquerda com margem entre si */
         .texto p {
             margin-top: 0;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             text-align: left;
         }
 
@@ -76,9 +75,9 @@
         /* Ajustes para telas pequenas (Mobile) */
         @media (max-width: 600px) {
             main {
-                width: 100%;
+                width: 95%;
                 box-sizing: border-box;
-                padding: 50px 20px 40px;
+                padding: 70px 20px 50px;
             }
             .texto {
                 font-size: 16px;
@@ -117,7 +116,7 @@
             <!-- LINHA DIVISÓRIA SUAVE -->
             <hr class="divisor">
 
-            <!-- SEGUNDA PARTE: INFORMAÇÕES TÉCNICAS E CRÉDITos -->
+            <!-- SEGUNDA PARTE: INFORMAÇÕES TÉCNICAS E CRÉDITOS -->
             <p>
                 “Arrudas: Memórias sonoras de um território-rio” foi realizado a partir de gravações sonoras ao longo do ribeirão Arrudas e também em outros corpos d’água relacionados a ele.
             </p>
