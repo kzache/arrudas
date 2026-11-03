@@ -9,7 +9,7 @@
     <style>
         :root {
             --cor-arrudas: #1c4354;
-            --cor-fundo: #d8d0bc; /* Mantém a cor oficial exata do index */
+            --cor-fundo: #d8d0bc; /* Cor de base neutra */
         }
 
         /* Configurações gerais da página */
@@ -24,7 +24,7 @@
             overflow-x: hidden;
         }
 
-        /* Camada de Fundo do Mapa - Passo 1: Ajustando suavemente a opacidade */
+        /* Aplica o filtro de cor IDÊNTICO ao mapa do uMap sobre a imagem mapa.svg */
         body::before {
             content: "";
             position: fixed;
@@ -42,9 +42,11 @@
             background-position: 108% center;
             background-size: cover; 
 
-            /* Ajustado para 0.10 (um pouco mais leve que o anterior) */
-            opacity: 0.10; 
-            filter: none;
+            /* FILTRO EXATO DO UMAP NO INDEX: */
+            filter: sepia(75%) saturate(65%) brightness(90%) contrast(95%);
+            
+            /* Transparência inicial para testarmos o tom */
+            opacity: 0.40; 
         }
 
         /* Conteúdo principal */
@@ -85,7 +87,7 @@
             body::before {
                 background-position: center center;
                 background-size: cover; 
-                opacity: 0.08;
+                opacity: 0.35;
             }
 
             main {
