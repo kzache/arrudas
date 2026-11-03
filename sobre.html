@@ -13,42 +13,68 @@
             padding: 0;
             font-family: "Courier New", monospace;
             color: #222;
-            background-color: #f3f0e8;
+            background-color: #f3f0e8; /* Cor de fundo sépia/papel */
+            position: relative;
+            min-height: 100vh;
         }
 
-        /* Conteúdo principal - Largura maior para ocupar mais área */
+        /* Camada de Fundo do Mapa SVG (Ocupa 100% da tela) */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1; /* Mantém o mapa atrás de todo o conteúdo */
+
+            /* Carrega a imagem do mapa */
+            background-image: url('mapa.svg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover; /* Faz a imagem cobrir toda a área da janela */
+
+            /* Ajuste de transparência e tom */
+            opacity: 0.18; /* REGULE AQUI: 0.18 = 18% de visibilidade. Aumente ou diminua conforme preferir */
+            filter: sepia(0.5); /* Mantém ou reforça o tom sépia no SVG */
+        }
+
+        /* Conteúdo principal - Alinhado à esquerda aproveitando a tela */
         main {
+            width: 90%;
             max-width: 1300px;
-            margin: 0 auto;
-            padding: 80px 40px 60px;
+            margin: 0;
+            padding: 80px 60px 60px;
         }
 
-        /* Estilo do texto e espaçamento de 1,5 entre as linhas */
+        /* Estilo do texto e espaçamento entre linhas */
         .texto {
             font-size: 17px;
             line-height: 1.5;
         }
 
-        /* Zera margens entre os parágrafos e define o alinhamento à esquerda */
+        /* Parágrafos alinhados à esquerda com margem entre si */
         .texto p {
             margin-top: 0;
-            margin-bottom: 15px;
+            margin-bottom: 25px;
             text-align: left;
         }
 
-        /* Linha divisória com a mesma largura total do texto */
+        /* Linha divisória com gradiente suave nas pontas */
         .divisor {
             border: none;
-            height: 3px; /* Espessura da linha */
-            background: linear-gradient(to right, transparent, #1a4049, transparent); /* Transparente nas pontas e cor no meio */
+            height: 2px;
+            background: linear-gradient(to right, transparent, #1a4049, transparent);
             width: 100%;
             margin: 3.5em 0;
-            opacity: 0.7; /* Suaviza ainda mais a intensidade */
+            opacity: 0.85;
         }
 
-        /* Ajustes para telas pequenas (Celulares) */
+        /* Ajustes para telas pequenas (Mobile) */
         @media (max-width: 600px) {
             main {
+                width: 100%;
+                box-sizing: border-box;
                 padding: 50px 20px 40px;
             }
             .texto {
@@ -79,13 +105,10 @@
                 O ribeirão nasce no município de Contagem e corre, percorrendo Belo Horizonte, até desaguar no rio das Velhas, em Sabará. O território do Arrudas possibilitou que múltiplos seres e comunidades originárias residissem e se assentassem em seu entorno. Para essas comunidades, o rio é um ente que dá sentido ao seu modo de ser e estar no mundo.
             </p>
             <p>
-                Embora considerado um esgoto a céu aberto ou um rio “morto”, consequência das práticas e relações sociais que o envolvem, o ribeirão Arrudas vive. Todo esse contexto histórico faz dele um importante guardião de memórias. 
-            </p>
-            <p>
-                Escute o que o ribeirão Arrudas tem para te contar.    
+                Embora considerado um esgoto a céu aberto ou um rio “morto”, consequência das práticas e relações sociais que o envolvem, o ribeirão Arrudas vive. Todo esse contexto histórico faz dele um importante guardião de memórias. Escute o que o ribeirão Arrudas tem para te contar.
             </p>
 
-            <!-- LINHA DIVISÓRIA COM ESPAÇAMENTO TRIPLO E LARGURA TOTAL DO TEXTO -->
+            <!-- LINHA DIVISÓRIA SUAVE -->
             <hr class="divisor">
 
             <!-- SEGUNDA PARTE: INFORMAÇÕES TÉCNICAS E CRÉDITOS -->
@@ -96,9 +119,11 @@
                 A composição sonora usa áudios de canto entoado pelos Pataxó da Aldeia Encontro das Águas e trecho de uma das importantes falas do mestre Antônio Bispo dos Santos, Nego Bispo.
             </p>
             <p>
-                Este projeto foi financiado pela Lei Paulo Gustavo (LPG), edital 02/2023 (245218), e pela Política Nacional Aldir Blanc de Fomento à Cultura (PNAB), edital 12/2024 (8387). Realização: 2025/2026.
+                Este projeto foi financiado pela Lei Paulo Gustavo (LPG), edital 02/2023 (245218), e pela Política Nacional Aldir Blanc de Fomento à Cultura (PNAB), edital 12/2024 (8387).
             </p>
-
+            <p>
+                Realização: 2025/2026.
+            </p>
         </div>
 
     </main>
