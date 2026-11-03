@@ -8,12 +8,12 @@
     <title>Sobre o projeto — Projeto Arrudas</title>
     
     <!-- Precarrega o mapa.svg para exibição imediata -->
-    <link rel="preload" href="mapa.svg" as="image">
+    <link rel="preload" href="mapa.svg" as="image" fetchpriority="high">
 
     <style>
         :root {
             --cor-arrudas: #1c4354;
-            --cor-fundo: #c9c8b7; /* Nova cor de fundo solicitada */
+            --cor-fundo: #c9c8b7;
         }
 
         /* Define a cor na raiz para eliminar qualquer flash branco no carregamento */
@@ -28,7 +28,7 @@
             overflow-x: hidden;
         }
 
-        /* Camada do mapa com o filtro do uMap e opacidade equilibrada */
+        /* Camada do mapa com o filtro do uMap e opacidade ajustada */
         body::before {
             content: "";
             position: fixed;
@@ -38,6 +38,7 @@
             height: 100vh;
             z-index: -1;
 
+            /* Carrega a imagem do mapa. Verifique se o arquivo está na mesma pasta do sobre.html */
             background-image: url('mapa.svg');
             background-repeat: no-repeat;
             background-position: 108% center;
@@ -46,8 +47,8 @@
             /* Filtro de cor idêntico ao uMap */
             filter: sepia(75%) saturate(65%) brightness(90%) contrast(95%);
             
-            /* Opacidade ajustada para o mapa aparecer de forma suave sobre a nova cor */
-            opacity: 0.35; 
+            /* Aumentado para 0.70 para garantir que você visualize o mapa nitidamente */
+            opacity: 0.70; 
             
             will-change: opacity, filter;
         }
@@ -88,7 +89,7 @@
             body::before {
                 background-position: center center;
                 background-size: cover; 
-                opacity: 0.30;
+                opacity: 0.65;
             }
 
             main {
