@@ -471,6 +471,47 @@
                 }
             }
         }
+
+        /* ==========================================
+           3. TABLET NA HORIZONTAL: usa o layout do computador
+           (detectado pelo tamanho físico da tela, vale para qualquer navegador)
+           ========================================== */
+        html.tablet-paisagem .tela-referencia {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1920px;
+            height: 1080px;
+            transform-origin: 0 0;
+            z-index: 1;
+            background-color: var(--cor-fundo);
+            will-change: transform;
+        }
+        html.tablet-paisagem .mobile { display: none; }
+
+        /* ==========================================
+           4. ANTES DE CARREGAR: sem tela branca
+           O mapa e o desenho aparecem juntos, com transição suave,
+           depois que o mapa terminar de carregar.
+           ========================================== */
+        .mapa iframe,
+        .mapa .desenho-arrudas {
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+        .mapa.pronto iframe,
+        .mapa.pronto .desenho-arrudas {
+            opacity: 1;
+        }
+
+        /* Esconde o palco até o primeiro ajuste de escala (reserva de 2,5 s) */
+        html:not(.iniciado) .tela-referencia,
+        html:not(.iniciado) .mobile {
+            visibility: hidden;
+            animation: revelar 0s 2.5s forwards;
+        }
+        @keyframes revelar { to { visibility: visible; } }
     </style>
 </head>
 <body>
@@ -588,10 +629,24 @@
             const posY = (h - alturaRef * escalaMob) * focoY;
             palcoMob.style.transform = `translate(${posX}px, ${posY}px) scale(${escalaMob})`;
         }
+
+        // Tablet = tela sensível ao toque com o lado menor de 500px ou mais (vale para qualquer navegador)
+        const ehTablet = navigator.maxTouchPoints > 0 && Math.min(screen.width, screen.height) >= 500;
+
+        function marcarTablet() {
+            document.documentElement.classList.toggle(
+                "tablet-paisagem",
+                ehTablet && window.innerWidth > window.innerHeight
+            );
+        }
+
         function ajustarTelas() {
+            marcarTablet();
             const wWin = window.innerWidth;
             const hWin = window.innerHeight;
-            if (wWin > 850 && hWin > 500) {
+            const modoPc = document.documentElement.classList.contains("tablet-paisagem")
+                || (wWin > 850 && hWin > 500);
+            if (modoPc) {
                 const escala = Math.max(wWin / larguraRef, hWin / alturaRef);
                 const posX = (wWin - (larguraRef * escala)) / 2;
                 const posY = (hWin - (alturaRef * escala)) / 2;
@@ -606,6 +661,15 @@
             ajustarTelas();
         }, 300));
         ajustarTelas();
+        document.documentElement.classList.add("iniciado");
+
+        // ---- Mostra mapa + desenho juntos quando o mapa terminar de carregar ----
+        document.querySelectorAll(".mapa").forEach((m) => {
+            const f = m.querySelector("iframe");
+            const mostrar = () => m.classList.add("pronto");
+            if (f) f.addEventListener("load", () => setTimeout(mostrar, 400));
+            setTimeout(mostrar, 4000);   // reserva, caso o evento não dispare
+        });
 
         const ponteiros = new Map();
         let arrasto = null;
