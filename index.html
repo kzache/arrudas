@@ -296,27 +296,38 @@
                 top: calc(env(safe-area-inset-top) + 14px);
                 left: 14px;
                 color: #1c3844;  
-                max-width: min(80vw, 310px);
+                max-width: min(80vw, 250px);   /* era min(80vw, 310px): caixa mais estreita */
                 padding: 12px 10px 12px 16px;
                 background-color: rgba(243, 240, 232, 0.75);
                 cursor: pointer;
                 border-radius: 16px;
+                -webkit-tap-highlight-color: transparent;   /* tira o azul ao tocar */
+                -webkit-touch-callout: none;
             }
             .titulo-mob h1 { margin: 0; font-size: 24px; font-weight: bold; line-height: 1.1; }
             .titulo-mob p { margin: 3px 0 0; font-size: 16px; line-height: 1.1; }
-            .menu-links-mob { display: none; padding-top: 6px; }
-            .titulo-mob.aberto .menu-links-mob { display: block; }
-            .menu-links-mob a { display: block; text-decoration: none; color: #222; font-size: 16px; padding: 8px 0; }
-            .dock-mob {
+            /* "Sobre o projeto" vira uma caixa própria, logo abaixo do título */
+            .menu-links-mob {
+                display: none;
                 position: absolute;
+                top: 100%;
                 left: 0;
-                right: 0;
-                bottom: calc(env(safe-area-inset-bottom) + 22px);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                pointer-events: none;
+                width: 100%;                  /* mesma largura da caixa do título */
+                margin-top: 6px;              /* espaço entre as duas caixas */
+                padding: 4px 10px 4px 16px;
+                background-color: rgba(243, 240, 232, 0.75);
+                border-radius: 16px;
             }
+            .titulo-mob.aberto .menu-links-mob { display: block; }
+            .menu-links-mob a {
+                display: block;
+                text-decoration: none;
+                color: #222;
+                font-size: 16px;
+                padding: 8px 0;
+                outline: none;
+            }
+            
             .dock-mob > * { pointer-events: auto; }
             .escute-mob {
                 --d: min(150px, 34vh);
