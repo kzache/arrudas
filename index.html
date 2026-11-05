@@ -472,6 +472,16 @@
                 }
             }
         }
+            /* TABLET NA HORIZONTAL (layout de celular): botão ESCUTE na mesma posição
+               em relação ao desenho que ele tem no layout do computador */
+            @media (max-width: 850px) and (orientation: landscape),
+                   (max-height: 500px) and (orientation: landscape) {
+                html.tablet-fx .escute-mob {
+                    --s: max(calc(100vw / 1920), calc(100lvh / 1080));
+                    margin-bottom: max(8px, calc(100vh - env(safe-area-inset-bottom) - 22px - var(--d) / 2 - 240 * var(--s))) !important;
+                    margin-bottom: max(8px, calc(100dvh - env(safe-area-inset-bottom) - 22px - var(--d) / 2 - 240 * var(--s))) !important;
+                }
+            }
     </style>
 </head>
 <body>
@@ -561,6 +571,10 @@
         Seu navegador não suporta elemento de áudio.
     </audio>
     <script>
+        // Marca tablets (tela de toque com lado menor >= 500px), em qualquer navegador
+        if (navigator.maxTouchPoints > 0 && Math.min(screen.width, screen.height) >= 500) {
+            document.documentElement.classList.add("tablet-fx");
+        }
         const telaReferencia = document.getElementById("telaReferencia");
         const fundoMob = document.getElementById("fundoMob");
         const palcoMob = document.getElementById("palcoMob");
