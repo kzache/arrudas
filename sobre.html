@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -7,8 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre o projeto — Projeto Arrudas</title>
     
-    <!-- Precarrega o mapa.svg para exibição imediata -->
+    <!-- Precarrega o mapa.svg e a logo pnab para priorizar o download -->
     <link rel="preload" href="mapa.svg" as="image">
+    <link rel="preload" href="pnab.png" as="image">
 
     <style>
         :root {
@@ -25,6 +27,20 @@
             position: relative;
             min-height: 100vh;
             overflow-x: hidden;
+        }
+
+        /* 
+           CARREGAMENTO UNIFICADO (FADE-IN): 
+           Mantém a página invisível até que o script confirme o carregamento das imagens, 
+           evitando que o texto apareça antes do mapa e da logo.
+        */
+        body {
+            opacity: 0;
+            transition: opacity 0.4s ease-in;
+        }
+
+        body.carregado {
+            opacity: 1;
         }
 
         /* Camada de fundo com o mapa e o filtro do uMap */
@@ -120,7 +136,7 @@
             }
 
             .logo-item {
-                max-height: 75px; /* Mantém um ótimo tamanho no mobile sem micro-escalas */
+                max-height: 75px;
             }
         }
     </style>
@@ -156,6 +172,7 @@
             </p>
             <p>
                 A produção integra os projetos “Arrudas: Memórias sonoras de um território-rio”, contemplado pela Lei Paulo Gustavo (LPG), edital 02/2023 (245218), e “Arrudas: som e memória”, contemplado pela Política Nacional Aldir Blanc de Fomento à Cultura (PNAB), edital 12/2024 (8387).
+            </p>
             <p>
                 Execução: 2025/2026.
             </p>
@@ -163,9 +180,26 @@
 
         <!-- Rodapé com a logomarca pnab alinhada à direita, com tamanho livre -->
         <footer class="rodape-logos">
-            <img src="pnab.png" alt="Logomarca Política Nacional Aldir Blanc (PNAB)" class="logo-item">
+            <img src="pnab.png" alt="Logomarca Política Nacional Aldir Blanc (PNAB)" class="logo-item" id="logoPnab">
         </footer>
     </main>
+
+    <script>
+        /* 
+           Garante que a página só se torne visível quando 
+           a imagem do rodapé (pnab.png) e a janela estiverem prontas.
+        */
+        window.addEventListener("load", () => {
+            const imgLogo = document.getElementById("logoPnab");
+            if (imgLogo.complete) {
+                document.body.classList.add("carregado");
+            } else {
+                imgLogo.addEventListener("load", () => {
+                    document.body.classList.add("carregado");
+                });
+            }
+        });
+    </script>
 
 </body>
 
